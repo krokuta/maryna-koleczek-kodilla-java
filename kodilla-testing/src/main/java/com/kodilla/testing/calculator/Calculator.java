@@ -20,12 +20,4 @@ public class Calculator {
         sub = a - b;
         return sub;
     }
-
-    public double getA(){
-        return a;
-    }
-
-    public double getB(){
-        return b;
-    }
 }
