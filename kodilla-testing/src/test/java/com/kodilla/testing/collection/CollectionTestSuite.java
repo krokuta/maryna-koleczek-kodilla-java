@@ -19,36 +19,37 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList(){
         //Given
-        OddNumbersExterminator oddNumbersExterminator1 = new OddNumbersExterminator();
-        ArrayList<Integer> testNumbers1 = new ArrayList<Integer>();
+        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        ArrayList<Integer> testEvenNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> testNumbers = new ArrayList<Integer>();
         //When
-        oddNumbersExterminator1.exterminate(testNumbers1);
-        ArrayList<Integer> testEvenNumbers1 = new ArrayList<Integer>();
-        ArrayList<Integer> result1 = oddNumbersExterminator1.getEvenNumbers();
-        System.out.println("testing empty list");
+        oddNumbersExterminator.exterminate(testNumbers);
+        ArrayList<Integer> result1 = oddNumbersExterminator.getEvenNumbers();
         //Then
-        Assert.assertEquals(testEvenNumbers1, result1);
+        Assert.assertEquals(testEvenNumbers, result1);
+        System.out.println("testing empty list");
+
     }
     @Test
     public void testOddNumbersExterminatorNormalList(){
         //Given
-        OddNumbersExterminator oddNumbersExterminator2 = new OddNumbersExterminator();
-        ArrayList<Integer> testNumbers2 = new ArrayList<Integer>();
-        testNumbers2.add(1);
-        testNumbers2.add(2);
-        testNumbers2.add(3);
-        testNumbers2.add(4);
-        testNumbers2.add(5);
-        testNumbers2.add(6);
+        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        ArrayList<Integer> testNumbers = new ArrayList<Integer>();
+        testNumbers.add(1);
+        testNumbers.add(2);
+        testNumbers.add(3);
+        testNumbers.add(4);
+        testNumbers.add(5);
+        testNumbers.add(6);
+        ArrayList<Integer> testEvenNumbers = new ArrayList<Integer>();
+        testEvenNumbers.add(2);
+        testEvenNumbers.add(4);
+        testEvenNumbers.add(6);
         //When
-        oddNumbersExterminator2.exterminate(testNumbers2);
-        ArrayList<Integer> testEvenNumbers2 = new ArrayList<Integer>();
-        testEvenNumbers2.add(2);
-        testEvenNumbers2.add(4);
-        testEvenNumbers2.add(6);
-        ArrayList<Integer> result = oddNumbersExterminator2.getEvenNumbers();
+        oddNumbersExterminator.exterminate(testNumbers);
+        ArrayList<Integer> result = oddNumbersExterminator.getEvenNumbers();
         System.out.println("testing list whit elements");
         //Then
-        Assert.assertEquals(testEvenNumbers2, result);
+        Assert.assertEquals(testEvenNumbers, result);
     }
 }
