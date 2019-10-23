@@ -1,17 +1,18 @@
 package com.kodilla.testing.forum.statistics;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class StatisticsCounterTestSuite {
+
     @Test
     public void testCalculateAdvStatisticsMock1(){
+        //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> users = new ArrayList<>();
         users.add(0, "u1");
@@ -24,10 +25,20 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts);
         int comments = 5;
         when(statisticsMock.commentsCount()).thenReturn(comments);
+
+        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+        //When
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
+        double delta = 1e-8;
+        //Then
+        Assert.assertEquals(5.0, statisticsCounter.getUsersCount(), delta);
+        Assert.assertEquals(0.0, statisticsCounter.getPostsCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getCommentsCount(), delta);
     }
 
     @Test
     public void testCalculateAdvStatisticsMock2(){
+        //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> users = new ArrayList<>();
         users.add(0, "u1");
@@ -40,10 +51,20 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts);
         int comments = 5;
         when(statisticsMock.commentsCount()).thenReturn(comments);
+
+        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+        //When
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
+        double delta = 1e-8;
+        //Then
+        Assert.assertEquals(5.0, statisticsCounter.getUsersCount(), delta);
+        Assert.assertEquals(1000.0, statisticsCounter.getPostsCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getCommentsCount(), delta);
     }
 
     @Test
     public void testCalculateAdvStatisticsMock3(){
+        //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> users = new ArrayList<>();
         users.add(0, "u1");
@@ -56,10 +77,20 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts);
         int comments = 0;
         when(statisticsMock.commentsCount()).thenReturn(comments);
+
+        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+        //When
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
+        double delta = 1e-8;
+        //Then
+        Assert.assertEquals(5.0, statisticsCounter.getUsersCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getPostsCount(), delta);
+        Assert.assertEquals(0.0, statisticsCounter.getCommentsCount(), delta);
     }
 
     @Test
     public void testCalculateAdvStatisticsMock4(){
+        //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> users = new ArrayList<>();
         users.add(0, "u1");
@@ -72,10 +103,20 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts);
         int comments = 5;
         when(statisticsMock.commentsCount()).thenReturn(comments);
+
+        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+        //When
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
+        double delta = 1e-8;
+        //Then
+        Assert.assertEquals(5.0, statisticsCounter.getUsersCount(), delta);
+        Assert.assertEquals(6.0, statisticsCounter.getPostsCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getCommentsCount(), delta);
     }
 
     @Test
     public void testCalculateAdvStatisticsMock5(){
+        //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> users = new ArrayList<>();
         users.add(0, "u1");
@@ -88,10 +129,21 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts);
         int comments = 6;
         when(statisticsMock.commentsCount()).thenReturn(comments);
+
+        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+        //When
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
+        double delta = 1e-8;
+        //Then
+        Assert.assertEquals(5.0, statisticsCounter.getUsersCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getPostsCount(), delta);
+        Assert.assertEquals(6.0, statisticsCounter.getCommentsCount(), delta);
     }
 
     @Test
     public void testCalculateAdvStatisticsMock6(){
+        //Given
+
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> users = new ArrayList<>();
         for(int n = 0; n < 100; n++){
@@ -102,10 +154,20 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts);
         int comments = 5;
         when(statisticsMock.commentsCount()).thenReturn(comments);
+
+        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+        //When
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
+        double delta = 1e-8;
+        //Then
+        Assert.assertEquals(100.0, statisticsCounter.getUsersCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getPostsCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getCommentsCount(), delta);
     }
 
     @Test
     public void testCalculateAdvStatisticsMock7(){
+        //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> users = new ArrayList<>();
         when(statisticsMock.usersNames()).thenReturn(users);
@@ -113,5 +175,14 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts);
         int comments = 5;
         when(statisticsMock.commentsCount()).thenReturn(comments);
+
+        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+        //When
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
+        double delta = 1e-8;
+        //Then
+        Assert.assertEquals(0.0, statisticsCounter.getUsersCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getPostsCount(), delta);
+        Assert.assertEquals(5.0, statisticsCounter.getCommentsCount(), delta);
     }
 }
