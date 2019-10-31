@@ -128,15 +128,14 @@ public class BoardTestSuite {
         //When
         List<TaskList> tasksInProgress = new ArrayList<>();
         tasksInProgress.add(new TaskList("In progress"));
-        OptionalDouble tasks = project.getTaskLists().stream()
+        double tasks = project.getTaskLists().stream()
                 .filter(tasksInProgress::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> t.getCreated())
-                .map(ld -> DAYS.between(ld, LocalDate.now()))
-                .map(n -> n.toString())
-                .mapToDouble(n -> Double.parseDouble(n))
-                .average();
-        double result = tasks.getAsDouble();
+                .mapToLong(ld -> DAYS.between(ld, LocalDate.now()))
+                .average()
+                .getAsDouble();
+        double result = tasks;
 
         //Then
         Assert.assertEquals(10.0, result, 0.001);

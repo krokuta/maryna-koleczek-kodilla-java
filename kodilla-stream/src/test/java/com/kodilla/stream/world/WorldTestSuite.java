@@ -26,7 +26,6 @@ public class WorldTestSuite {
         Continent continent2 = new Continent();
         Continent continent3 = new Continent();
 
-        //When
         continent1.addCountry(sokovia);
         continent1.addCountry(wakanda);
         continent2.addCountry(middleEarth);
@@ -39,8 +38,11 @@ public class WorldTestSuite {
         world.listOfContinents.add(continent2);
         world.listOfContinents.add(continent3);
 
+        //When
+        BigDecimal peopleQuantityResult = world.getPeopleQuantity();
+
         //Then
         BigDecimal numberOfPeople = new BigDecimal("266666664");
-        Assert.assertEquals(numberOfPeople, world.getPeopleQuantity());
+        Assert.assertEquals(numberOfPeople, peopleQuantityResult);
     }
 }
